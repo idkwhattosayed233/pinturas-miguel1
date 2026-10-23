@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+<!--*&#x20;Configuración general&#x20;*-->
+
+<meta name="theme-color" content="#D32F2F">
+
+<meta name="description" content="Pinturas Miguel: pintura y decoración en Benidorm. Presupuestos sin compromiso.">
+
+<!--*&#x20;PWA / Android / Chrome&#x20;*-->
+
+<link rel="manifest" href="./manifest.json">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<!--*&#x20;Compatibilidad con iPhone y iPad&#x20;*-->
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-title" content="Pinturas Miguel">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+
+  <title>Pinturas Miguel | Pintor económico y limpio en Benidorm</title>
+
+  <!--*&#x20;Fuentes e iconos&#x20;*-->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <script>
+
+    tailwind.config = {
+
+      theme: {
+
+        extend: {
+
+          colors: {
+
+            brand: '#D32F2F',
+
+            ink: '#1A1A1A',
+
+            paper: '#F8F9FA'
+
+          },
+
+          fontFamily: {
+
+            sans: ['Inter', 'sans-serif']
+
+          },
+
+          boxShadow: {
+
+            soft: '0 12px 35px rgba(0,0,0,.07)'
+
+          }
+
+        }
+
+      }
+
+    };
+
+  </script>
+
+  <style>
+
+    html { scroll-behavior: smooth; }
+
+    body { font-family: Inter, sans-serif; }
+
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .page { display: none; }
+
+    .page.active { display: block; animation: appear .28s ease; }
+
+    @keyframes appear {
+
+      from { opacity: 0; transform: translateY(6px); }
+
+      to { opacity: 1; transform: translateY(0); }
+
+    }
+
+    .nav-link { position: relative; transition: color .2s; }
+
+    .nav-link.active, .nav-link:hover { color: #D32F2F; }
+
+    .nav-link.active::after {
+
+      content: '';
+
+      position: absolute;
+
+      left: 0; right: 0; bottom: -9px;
+
+      height: 3px; background: #D32F2F;
+
+      border-radius: 5px;
+
+    }
+
+    .filter-btn.active { background: #D32F2F; color: white; border-color: #D32F2F; }
+
+    .gallery-item.hidden { display: none; }
+
+    .hero-overlay {
+
+      background: linear-gradient(90deg, rgba(0,0,0,.78), rgba(0,0,0,.25));
+
+    }
+
+    .section-label {
+
+      display: inline-block;
+
+      color: #D32F2F;
+
+      font-weight: 800;
+
+      font-size: .75rem;
+
+      letter-spacing: .14em;
+
+      text-transform: uppercase;
+
+    }
+
+    .gallery-item img { transition: transform .5s; }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    .icon-box {
+
+      display: flex; align-items: center; justify-content: center;
+
+      width: 54px; height: 54px; flex-shrink: 0;
+
+      border-radius: 15px; background: #fff0f0;
+
+      color: #D32F2F; font-size: 1.35rem;
+
+    }
+
+    .map-panel {
+      background-color: #e7eee7;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *, *::before, *::after {
+
+        scroll-behavior: auto !important;
+
+        animation-duration: .01ms !important;
+
+        transition-duration: .01ms !important;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body class="bg-white text-ink antialiased">
+
+  <!--*&#x20;BARRA SUPERIOR&#x20;*-->
+
+  <div class="hidden md:block bg-ink text-white text-sm">
+
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+
+      <div class="flex items-center gap-6">
+
+        <a href="tel:693392120" class="hover:text-red-300">
+
+          <i class="fa-solid fa-phone mr-2 text-red-400"></i>693 392 120
+
+        </a>
+
+        <a href="mailto:abengozar@yahoo.es" class="hover:text-red-300">
+
+          <i class="fa-solid fa-envelope mr-2 text-red-400"></i>abengozar@yahoo.es
+
+        </a>
+
+      </div>
+
+      <div class="flex gap-4">
+
+        <a href="https://wa.me/34693392120" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp hover:text-red-400"></i></a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!--*&#x20;LOGO Y MENÚ STICKY&#x20;*-->
+
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      <div class="flex items-center justify-between py-3 gap-3">
+
+        <button onclick="navigateTo('inicio')" class="flex items-center gap-3 text-left" aria-label="Ir al inicio">
+
+          <div class="w-12 h-12 bg-brand text-white rounded-xl flex items-center justify-center text-2xl">
+
+            <i class="fa-solid fa-paint-roller"></i>
+
+          </div>
+
+          <div>
+
+            <div class="text-xl sm:text-2xl font-black tracking-tight leading-none">
+
+              PINTURAS <span class="text-brand">MIGUEL</span>
+
+            </div>
+
+            <div class="text-[10px] sm:text-xs text-gray-500 font-semibold mt-1">TODO EN PINTURA Y DECORACIÓN</div>
+
+          </div>
+
+        </button>
+
+        <a href="tel:693392120" class="md:hidden bg-brand text-white px-3 py-2.5 rounded-lg font-bold text-sm">
+
+          <i class="fa-solid fa-phone mr-1"></i> Llamar
+
+        </a>
+
+        <div class="hidden md:flex items-center gap-7">
+
+          <nav class="flex items-center gap-6 text-xs lg:text-sm font-bold">
+
+            <button class="nav-link active" data-page="inicio" onclick="navigateTo('inicio')">INICIO</button>
+
+            <button class="nav-link" data-page="servicios" onclick="navigateTo('servicios')">SERVICIOS</button>
+
+            <button class="nav-link" data-page="servicios" onclick="navigateTo('servicios')">TRABAJOS</button>
+
+            <button class="nav-link" data-page="inicio" onclick="navigateTo('inicio','opiniones')">OPINIONES</button>
+
+            <button class="nav-link" data-page="contacto" onclick="navigateTo('contacto')">CONTACTO</button>
+
+          </nav>
+
+          <button onclick="navigateTo('contacto')" class="bg-brand hover:bg-red-800 text-white rounded-lg px-4 py-3 text-xs font-extrabold transition whitespace-nowrap">
+
+            PRESUPUESTO GRATIS
+
+          </button>
+
+        </div>
+
+        <button id="menu-toggle" class="md:hidden text-2xl p-2" aria-label="Abrir menú" aria-expanded="false">
+
+          <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+      </div>
+
+      <nav id="mobile-menu" class="hidden md:hidden pb-4 border-t border-gray-100">
+
+        <div class="flex flex-col gap-1 pt-3 font-bold text-sm">
+
+          <button class="text-left p-3 rounded-lg hover:bg-red-50" onclick="navigateTo('inicio')">INICIO</button>
+
+          <button class="text-left p-3 rounded-lg hover:bg-red-50" onclick="navigateTo('servicios')">SERVICIOS Y TRABAJOS</button>
+
+          <button class="text-left p-3 rounded-lg hover:bg-red-50" onclick="navigateTo('inicio','opiniones')">OPINIONES</button>
+
+          <button class="text-left p-3 rounded-lg hover:bg-red-50" onclick="navigateTo('contacto')">CONTACTO</button>
+
+          <button class="bg-brand text-white p-3 rounded-lg mt-2" onclick="navigateTo('contacto')">PRESUPUESTO SIN COMPROMISO</button>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+  <main>
+
+    <!--*&#x20;===================================================*
+
+*&#xA0;        PÁGINA 1: INICIO*
+
+*&#xA0;   ====================================================&#x20;*-->
+
+    <section id="inicio" class="page active">
+
+      <!--*&#x20;HERO&#x20;*-->
+
+      <div class="relative min-h-[600px] lg:min-h-[660px] flex items-center overflow-hidden bg-gray-900">
+
+        <img
+
+          src="/pinturas miguel/pinturas-miguel.png"
+
+          alt="Profesional realizando trabajos de pintura"
+
+          class="absolute inset-0 w-full h-full object-cover"
+
+          fetchpriority="high"
+
+        >
+
+        <div class="absolute inset-0 hero-overlay"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 py-16 w-full">
+
+          <div class="max-w-3xl text-white">
+
+            <span class="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs sm:text-sm font-bold mb-6">
+
+              <i class="fa-solid fa-location-dot text-red-400"></i>
+
+              PINTOR PROFESIONAL EN BENIDORM
+
+            </span>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black leading-[1.08] tracking-tight mb-6">
+
+              PINTURAS MIGUEL
+
+              <span class="block text-red-400 mt-2">Pintor económico y limpio</span>
+
+            </h1>
+
+            <p class="text-gray-200 text-base sm:text-lg leading-relaxed max-w-2xl mb-8">
+
+              Ofrecemos soluciones profesionales en pintura y decoración para viviendas, comunidades, locales y oficinas. Trabajos limpios, cuidados y con acabados de calidad.
+
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-9 max-w-3xl">
+
+              <div class="flex items-center gap-3 bg-white/10 border border-white/15 backdrop-blur rounded-xl p-3">
+
+                <i class="fa-solid fa-file-invoice-dollar text-red-400 text-xl"></i>
+
+                <span class="text-sm font-bold">Presupuesto sin compromiso</span>
+
+              </div>
+
+              <div class="flex items-center gap-3 bg-white/10 border border-white/15 backdrop-blur rounded-xl p-3">
+
+                <i class="fa-solid fa-broom text-red-400 text-xl"></i>
+
+                <span class="text-sm font-bold">Trabajos limpios</span>
+
+              </div>
+
+              <div class="flex items-center gap-3 bg-white/10 border border-white/15 backdrop-blur rounded-xl p-3">
+
+                <i class="fa-solid fa-medal text-red-400 text-xl"></i>
+
+                <span class="text-sm font-bold">Calidad y buenos precios</span>
+
+              </div>
+
+            </div>
+
+            <div class="flex flex-col sm:flex-row flex-wrap gap-3">
+
+              <a href="tel:693392120" class="bg-brand hover:bg-red-800 text-white rounded-xl px-6 py-4 font-extrabold text-center transition">
+
+                <i class="fa-solid fa-phone mr-2"></i>LLÁMANOS
+
+              </a>
+
+              <a href="https://wa.me/34693392120" target="_blank" rel="noopener noreferrer" class="bg-[#25D366] hover:bg-green-600 text-white rounded-xl px-6 py-4 font-extrabold text-center transition">
+
+                <i class="fa-brands fa-whatsapp mr-2 text-xl align-middle"></i>ESCRÍBENOS POR WHATSAPP
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!--*&#x20;TRES COLUMNAS&#x20;*-->
+
+      <section class="py-20 bg-white">
+
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+          <div class="grid lg:grid-cols-3 gap-8">
+
+            <div class="bg-paper rounded-2xl p-7 sm:p-8 border border-gray-100">
+
+              <div class="icon-box mb-5"><i class="fa-solid fa-paint-roller"></i></div>
+
+              <h2 class="text-xl font-black mb-6">NUESTROS SERVICIOS</h2>
+
+              <ul class="space-y-4 text-gray-600 text-sm">
+
+                <li><i class="fa-solid fa-check text-brand mr-3"></i>Pintura de viviendas</li>
+
+                <li><i class="fa-solid fa-check text-brand mr-3"></i>Comunidades de vecinos</li>
+
+                <li><i class="fa-solid fa-check text-brand mr-3"></i>Locales y oficinas</li>
+
+                <li><i class="fa-solid fa-check text-brand mr-3"></i>Fachadas</li>
+
+                <li><i class="fa-solid fa-check text-brand mr-3"></i>Impermeabilizaciones</li>
+
+                <li><i class="fa-solid fa-check text-brand mr-3"></i>Tratamiento de humedades</li>
+
+                <li><i class="fa-solid fa-check text-brand mr-3"></i>Esmaltado de hierro y madera</li>
+
+                <li><i class="fa-solid fa-check text-brand mr-3"></i>Pintura de alta decoración</li>
+
+              </ul>
+
+              <button onclick="navigateTo('servicios')" class="mt-7 text-brand font-extrabold text-sm hover:underline">
+
+                VER TRABAJOS <i class="fa-solid fa-arrow-right ml-1"></i>
+
+              </button>
+
+            </div>
+
+            <div class="bg-paper rounded-2xl p-7 sm:p-8 border border-gray-100">
+
+              <div class="icon-box mb-5"><i class="fa-solid fa-award"></i></div>
+
+              <h2 class="text-xl font-black mb-6">¿POR QUÉ ELEGIRNOS?</h2>
+
+              <ul class="space-y-5 text-gray-600 text-sm leading-relaxed">
+
+                <li class="flex gap-3">
+
+                  <i class="fa-solid fa-circle-check text-brand text-lg mt-0.5"></i>
+
+                  <span><strong class="text-ink">Experiencia:</strong> profesionalidad y atención a cada detalle.</span>
+
+                </li>
+
+                <li class="flex gap-3">
+
+                  <i class="fa-solid fa-circle-check text-brand text-lg mt-0.5"></i>
+
+                  <span><strong class="text-ink">Precios ajustados:</strong> presupuesto sin compromiso.</span>
+
+                </li>
+
+                <li class="flex gap-3">
+
+                  <i class="fa-solid fa-circle-check text-brand text-lg mt-0.5"></i>
+
+                  <span><strong class="text-ink">Limpieza y calidad:</strong> cuidado del espacio durante el trabajo.</span>
+
+                </li>
+
+                <li class="flex gap-3">
+
+                  <i class="fa-solid fa-circle-check text-brand text-lg mt-0.5"></i>
+
+                  <span><strong class="text-ink">Seriedad y puntualidad:</strong> atención profesional y cercana.</span>
+
+                </li>
+
+                <li class="flex gap-3">
+
+                  <i class="fa-solid fa-circle-check text-brand text-lg mt-0.5"></i>
+
+                  <span><strong class="text-ink">Buenos acabados:</strong> atención a los detalles.</span>
+
+                </li>
+
+              </ul>
+
+            </div>
+
+            <div id="opiniones" class="bg-paper rounded-2xl p-7 sm:p-8 border border-gray-100">
+
+              <div class="icon-box mb-5"><i class="fa-solid fa-star"></i></div>
+
+              <h2 class="text-xl font-black mb-6">OPINIONES DE CLIENTES</h2>
+
+              <div class="space-y-5">
+
+                <div class="bg-white p-4 rounded-xl border border-gray-100">
+
+                  <div class="text-yellow-500 text-sm mb-2" aria-label="Cinco estrellas">★★★★★</div>
+
+                  <p class="text-sm text-gray-500 italic">Experiencia de 10, muy trabajador y profesional, me hizo el trabajo como si fuera para él y me solucionó diferentes problemas que me fueron surgiendo, repetiría sin duda, es difícil encontrar profesionales asi.</p>
+
+                  <p class="text-sm font-bold mt-3">Vero Pardo.</p>
+
+                </div>
+
+                <div class="bg-white p-4 rounded-xl border border-gray-100">
+
+                  <div class="text-yellow-500 text-sm mb-2" aria-label="Cinco estrellas">★★★★★</div>
+
+                  <p class="text-sm text-gray-500 italic">Miguel es un excelente profesional. Es eficaz, es atento, va resolviendo problemas que van surgiendo, además es rápido y lo deja todo bastante limpio. Totalmente recomendable. Añadir que el precio es muy razonable.</p>
+
+                  <p class="text-sm font-bold mt-3">Mayte Lladó.</p>
+
+                </div>
+
+                <div class="bg-white p-4 rounded-xl border border-gray-100">
+
+                  <div class="text-yellow-500 text-sm mb-2" aria-label="Cinco estrellas">★★★★★</div>
+
+                  <p class="text-sm text-gray-500 italic">100x100 recomendable!!una persona muy profesional,me surgieron diferentes imprevistos durante la obra y Miguel me lo soluciono,es una persona muy resolutiva y te da siempre facilidades,muy limpio durante todo el trabajo y muy buenos acabados,desde luego que si tuviese que repetir lo contrataría de nuevo,muy buen servicio y muy buena relación calidad precio,un profesional como la copa de un pino!!</p>
+
+                  <p class="text-sm font-bold mt-3">Ruben Gonzales Alonso</p>
+
+                </div>
+
+              </div>
+
+              <!--*&#x20;Sustituye el enlace por el perfil real de Google del negocio&#x20;*-->
+
+              <a href="https://www.google.com/maps/search/?api=1&query=Pinturas+Miguel+Benidorm"
+
+                 target="_blank" rel="noopener noreferrer"
+
+                 class="inline-flex items-center gap-2 text-sm font-bold text-brand mt-5 hover:underline">
+
+                <i class="fa-brands fa-google"></i> Ver en Google Maps
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!--*&#x20;BANNER ROJO&#x20;*-->
+
+      <section class="bg-brand text-white py-12">
+
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 flex flex-col lg:flex-row items-center justify-between gap-7">
+
+          <div>
+
+            <h2 class="text-2xl sm:text-3xl font-black mb-2">CONTACTA CON NOSOTROS</h2>
+
+            <p class="text-red-100">Solicita tu presupuesto gratis y sin compromiso.</p>
+
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+
+            <a href="tel:693392120" class="bg-white text-brand px-6 py-4 rounded-xl font-extrabold text-center hover:bg-gray-100">
+
+              <i class="fa-solid fa-phone mr-2"></i>693 392 120
+
+            </a>
+
+            <a href="https://wa.me/34693392120" target="_blank" rel="noopener noreferrer" class="bg-[#25D366] px-6 py-4 rounded-xl font-extrabold text-center hover:bg-green-600">
+
+              <i class="fa-brands fa-whatsapp mr-2 text-xl align-middle"></i>WHATSAPP
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </section>
+
+    <!--*&#x20;===================================================*
+
+*&#xA0;        PÁGINA 2: TRABAJOS Y SERVICIOS*
+
+*&#xA0;   ====================================================&#x20;*-->
+
+    <section id="servicios" class="page">
+
+      <div class="bg-paper py-16 sm:py-20">
+
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+          <span class="section-label">Nuestro trabajo</span>
+
+          <h1 class="text-4xl sm:text-5xl font-black mt-3 mb-5">TRABAJOS REALIZADOS</h1>
+
+          <p class="text-gray-600 max-w-3xl leading-relaxed">
+
+            Algunos de nuestros trabajos en viviendas, comunidades, locales y más. Descubre las posibilidades de la pintura y la decoración para renovar tus espacios.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <!--*&#x20;FILTROS&#x20;*-->
+
+      <section class="py-12">
+
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+          <div class="flex flex-wrap gap-3 mb-9" role="group" aria-label="Filtrar trabajos">
+
+            <button class="filter-btn active border border-gray-200 rounded-full px-5 py-2.5 text-sm font-bold transition" data-filter="todos">TODOS</button>
+
+            <button class="filter-btn border border-gray-200 rounded-full px-5 py-2.5 text-sm font-bold transition" data-filter="interiores">INTERIORES</button>
+
+            <button class="filter-btn border border-gray-200 rounded-full px-5 py-2.5 text-sm font-bold transition" data-filter="exteriores">EXTERIORES</button>
+
+            <button class="filter-btn border border-gray-200 rounded-full px-5 py-2.5 text-sm font-bold transition" data-filter="fachadas">FACHADAS</button>
+
+            <button class="filter-btn border border-gray-200 rounded-full px-5 py-2.5 text-sm font-bold transition" data-filter="esmaltados">ESMALTADOS</button>
+
+          </div>
+
+<!--*&#x20;GALERÍA&#x20;*-->
+
+<div id="gallery" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+  <!--*&#x20;Vídeo 1&#x20;*-->
+
+  <article class="gallery-item group overflow-hidden rounded-2xl bg-white shadow-soft"
+
+           data-category="interiores">
+
+    <div class="h-64 overflow-hidden bg-black relative">
+
+  <video
+
+    class="w-full h-full object-cover"
+
+    src="./videos%20y%20fotos/WhatsApp%20Video%202026-10-15%20at%2014.57.41.mp4"
+
+    muted
+
+    playsinline
+
+    loop
+
+    preload="metadata"
+
+    controlslist="nodownload noplaybackrate"
+
+    aria-label="Vídeo de pintura de interiores">
+
+  </video>
+
+  <button
+
+    type="button"
+
+    class="absolute bottom-3 left-3 bg-black/70 text-white rounded-lg px-4 py-2 text-sm font-bold"
+
+    onclick="toggleVideo(this)">
+
+    ▶ Reproducir
+
+  </button>
+
+</div>
+
+    <div class="p-5">
+
+      <span class="text-xs font-extrabold text-brand">INTERIORES</span>
+
+      <h2 class="font-bold text-lg mt-1">Pintura de interiores</h2>
+
+      <p class="text-sm text-gray-500 mt-2">
+
+        Renovación de paredes y espacios interiores.
+
+      </p>
+
+    </div>
+
+  </article>
+
+  <!--*&#x20;Vídeo 2&#x20;*-->
+
+  <article class="gallery-item group overflow-hidden rounded-2xl bg-white shadow-soft"
+
+           data-category="interiores">
+
+    <div class="h-64 overflow-hidden bg-black relative">
+
+  <video
+
+    class="w-full h-full object-cover"
+
+    src="./videos%20y%20fotos/WhatsApp%20Video%202026-10-15%20at%2014.56.24.mp4"
+
+    muted
+
+    playsinline
+
+    loop
+
+    preload="metadata"
+
+    controlslist="nodownload noplaybackrate"
+
+    aria-label="Vídeo de pintura de interiores">
+
+  </video>
+
+  <button
+
+    type="button"
+
+    class="absolute bottom-3 left-3 bg-black/70 text-white rounded-lg px-4 py-2 text-sm font-bold"
+
+    onclick="toggleVideo(this)">
+
+    ▶ Reproducir
+
+  </button>
+
+</div>
+
+    <div class="p-5">
+
+      <span class="text-xs font-extrabold text-brand">INTERIORES</span>
+
+      <h2 class="font-bold text-lg mt-1">Salones y viviendas</h2>
+
+      <p class="text-sm text-gray-500 mt-2">
+
+        Acabados para espacios luminosos.
+
+      </p>
+
+    </div>
+
+  </article>
+
+  <!--*&#x20;Vídeo 3&#x20;*-->
+
+  <article class="gallery-item group overflow-hidden rounded-2xl bg-white shadow-soft"
+
+           data-category="interiores">
+
+    <div class="h-64 overflow-hidden bg-black relative">
+
+  <video
+
+    class="w-full h-full object-cover"
+
+    src="./videos%20y%20fotos/WhatsApp%20Video%202026-10-15%20at%2014.56.03.mp4"
+
+    muted
+
+    playsinline
+
+    loop
+
+    preload="metadata"
+
+    controlslist="nodownload noplaybackrate"
+
+    aria-label="Vídeo de pintura de interiores">
+
+  </video>
+
+  <button
+
+    type="button"
+
+    class="absolute bottom-3 left-3 bg-black/70 text-white rounded-lg px-4 py-2 text-sm font-bold"
+
+    onclick="toggleVideo(this)">
+
+    ▶ Reproducir
+
+  </button>
+
+</div>
+
+    <div class="p-5">
+
+      <span class="text-xs font-extrabold text-brand">INTERIORES</span>
+
+      <h2 class="font-bold text-lg mt-1">Techo</h2>
+
+      <p class="text-sm text-gray-500 mt-2">Protección y acabados para el techo.
+
+      </p>
+
+    </div>
+
+  </article>
+
+</div>
+
+<p id="no-results" class="hidden text-center text-gray-500 py-10">
+
+  No hay trabajos en esta categoría.
+
+</p>
+
+        </div>
+      </section>
+    </section>
+
+    <!--*&#x20;===================================================*
+
+*&#xA0;        PÁGINA 3: CONTACTO Y PRESUPUESTO*
+
+*&#xA0;   ====================================================&#x20;*-->
+
+    <section id="contacto" class="page">
+
+      <section class="bg-paper py-16 sm:py-20">
+
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+          <div class="max-w-4xl">
+
+            <span class="section-label">Hablemos de tu proyecto</span>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mt-3 mb-6">
+
+              PIDE TU PRESUPUESTO <span class="text-brand">SIN COMPROMISO</span>
+
+            </h1>
+
+            <p class="text-gray-600 text-lg leading-relaxed mb-8">
+
+              Cuéntanos tu proyecto y te ayudaremos a encontrar una solución ajustada a tus necesidades.
+
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4">
+
+              <a href="tel:693392120" class="inline-flex items-center justify-center gap-3 bg-brand hover:bg-red-800 text-white rounded-xl px-7 py-5 font-black text-xl transition">
+
+                <i class="fa-solid fa-phone"></i>693 392 120
+
+              </a>
+
+              <a href="https://wa.me/34693392120" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-green-600 text-white rounded-xl px-7 py-5 font-black transition">
+
+                <i class="fa-brands fa-whatsapp text-2xl"></i>ESCRÍBENOS POR WHATSAPP
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!--*&#x20;FORMULARIO Y UBICACIÓN&#x20;*-->
+
+      <section class="py-16 sm:py-20">
+
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+          <div class="grid lg:grid-cols-2 gap-12">
+
+            <div class="bg-white border border-gray-100 rounded-2xl p-6 sm:p-9 shadow-soft">
+
+              <div class="icon-box mb-5"><i class="fa-solid fa-envelope-open-text"></i></div>
+
+              <h2 class="text-2xl font-black mb-2">FORMULARIO DE CONTACTO</h2>
+
+<p class="text-sm text-gray-500 mb-7">Rellena los campos y prepara tu consulta por correo electrónico.</p>
+
+<form id="contact-form" action="https://formspree.io/f/moejgzav" method="POST">
+
+    <!--*&#x20;🌐 Forzar idioma español en avisos y CAPTCHA&#x20;*-->
+
+    <input type="hidden" name="_language" value="es">
+
+    <!--*&#x20;📩 Asunto del correo que recibirá Miguel&#x20;*-->
+
+    <input type="hidden" name="_subject" value="¡Nuevo mensaje de presupuesto desde la Web!">
+<div>
+
+      <label for="name" class="block text-sm font-bold mb-2">Nombre completo *</label>
+
+      <input id="name" name="name" type="text" autocomplete="name" required maxlength="100" placeholder="Tu nombre"
+
+        class="w-full rounded-xl border border-gray-200 px-4 py-3.5 outline-none focus:border-brand focus:ring-2 focus:ring-red-100">
+
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-5">
+
+      <div>
+
+        <label for="phone" class="block text-sm font-bold mb-2">Teléfono *</label>
+
+        <input id="phone" name="phone" type="tel" autocomplete="tel" required maxlength="30" placeholder="Tu teléfono"
+
+          class="w-full rounded-xl border border-gray-200 px-4 py-3.5 outline-none focus:border-brand focus:ring-2 focus:ring-red-100">
+
+      </div>
+
+      <div>
+
+        <label for="email" class="block text-sm font-bold mb-2">Email *</label>
+
+        <input id="email" name="email" type="email" autocomplete="email" required maxlength="150" placeholder="tu@email.com"
+
+          class="w-full rounded-xl border border-gray-200 px-4 py-3.5 outline-none focus:border-brand focus:ring-2 focus:ring-red-100">
+
+      </div>
+
+    </div>
+
+    <div>
+
+      <label for="message" class="block text-sm font-bold mb-2">Cuéntanos tu proyecto *</label>
+
+      <textarea id="message" name="message" rows="5" required maxlength="3000" placeholder="¿Qué necesitas pintar o renovar?..."
+
+        class="w-full rounded-xl border border-gray-200 px-4 py-3.5 outline-none resize-y focus:border-brand focus:ring-2 focus:ring-red-100"></textarea>
+
+    </div>
+
+    <label class="flex items-start gap-3 text-xs text-gray-600 leading-relaxed">
+
+      <input type="checkbox" id="privacy" name="privacy" value="accepted" required class="mt-1 accent-red-600">
+
+      <span>He leído la información de privacidad y acepto el tratamiento de mis datos para gestionar esta consulta. *</span>
+
+    </label>
+
+    <button type="submit" class="w-full bg-brand hover:bg-red-800 text-white rounded-xl px-6 py-4 font-extrabold transition">
+
+      <i class="fa-solid fa-paper-plane mr-2"></i>ENVIAR MENSAJE
+
+    </button>
+
+</form>
+
+            </div>
+
+            <div>
+
+              <div class="mb-7">
+
+                <span class="section-label">Zona de trabajo</span>
+
+                <h2 class="text-2xl sm:text-3xl font-black mt-3 mb-4">TRABAJAMOS EN BENIDORM Y ALREDEDORES</h2>
+
+                <p class="text-gray-600 leading-relaxed">Contacta con nosotros para consultar disponibilidad y trabajos en tu localidad.</p>
+
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 mb-8">
+
+                <div class="flex gap-2 items-center"><i class="fa-solid fa-location-dot text-brand"></i><span class="text-sm font-semibold">Benidorm</span></div>
+
+                <div class="flex gap-2 items-center"><i class="fa-solid fa-location-dot text-brand"></i><span class="text-sm font-semibold">La Nucia</span></div>
+
+                <div class="flex gap-2 items-center"><i class="fa-solid fa-location-dot text-brand"></i><span class="text-sm font-semibold">Alfaz del Pi</span></div>
+
+                <div class="flex gap-2 items-center"><i class="fa-solid fa-location-dot text-brand"></i><span class="text-sm font-semibold">Finestrat</span></div>
+
+                <div class="flex gap-2 items-center"><i class="fa-solid fa-location-dot text-brand"></i><span class="text-sm font-semibold">Villajoyosa</span></div>
+
+                <div class="flex gap-2 items-center"><i class="fa-solid fa-location-dot text-brand"></i><span class="text-sm font-semibold">Polop</span></div>
+
+                <div class="flex gap-2 items-center"><i class="fa-solid fa-location-dot text-brand"></i><span class="text-sm font-semibold">Altea</span></div>
+
+                <div class="flex gap-2 items-center"><i class="fa-solid fa-location-dot text-brand"></i><span class="text-sm font-semibold">Zonas cercanas</span></div>
+
+              </div>
+
+              <div class="rounded-2xl overflow-hidden shadow-soft border border-gray-100">
+
+                <div class="map-panel h-72 relative flex items-center justify-center">
+
+                  <div class="text-center bg-white/95 shadow-lg rounded-2xl p-5 max-w-xs mx-4">
+
+                    <div class="text-brand text-3xl mb-2"><i class="fa-solid fa-location-dot"></i></div>
+
+                    <h3 class="font-black text-xl">BENIDORM</h3>
+
+                    <p class="text-sm text-gray-500 mt-1">Alicante, Comunidad Valenciana</p>
+
+                    <a href="https://www.google.com/maps/search/?api=1&query=Benidorm+Alicante"
+
+                      target="_blank" rel="noopener noreferrer"
+
+                      class="inline-block mt-4 bg-brand text-white rounded-lg px-4 py-2.5 text-sm font-bold hover:bg-red-800">
+
+                      <i class="fa-solid fa-map mr-1"></i>Ver mapa
+
+                    </a>
+
+                  </div>
+
+                </div>
+
+                <div class="p-5 flex items-center gap-4 bg-white">
+
+                  <div class="icon-box"><i class="fa-solid fa-map-location-dot"></i></div>
+
+                  <div>
+
+                    <p class="font-bold">Benidorm y alrededores</p>
+
+                    <p class="text-sm text-gray-500">Consulta tu zona y solicita presupuesto.</p>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="mt-6 bg-paper rounded-xl p-5 flex items-start gap-4">
+
+                <div class="icon-box"><i class="fa-solid fa-clock"></i></div>
+
+                <div><h3 class="font-bold">Atención personalizada</h3><p class="text-sm text-gray-500 mt-1">Llámanos o escríbenos para explicar qué necesitas.</p></div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!--*&#x20;GARANTÍAS&#x20;*-->
+
+      <section class="bg-paper py-14">
+
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-7">
+
+            <div class="flex items-center gap-4">
+
+              <div class="icon-box"><i class="fa-solid fa-file-invoice"></i></div>
+
+              <div><h3 class="font-extrabold text-sm">Presupuesto gratuito</h3><p class="text-xs text-gray-500 mt-1">Sin compromiso</p></div>
+
+            </div>
+
+            <div class="flex items-center gap-4">
+
+              <div class="icon-box"><i class="fa-solid fa-headset"></i></div>
+
+              <div><h3 class="font-extrabold text-sm">Atención personalizada</h3><p class="text-xs text-gray-500 mt-1">Trato cercano</p></div>
+
+            </div>
+
+            <div class="flex items-center gap-4">
+
+              <div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+
+              <div><h3 class="font-extrabold text-sm">Calidad y cuidado</h3><p class="text-xs text-gray-500 mt-1">Buenos acabados</p></div>
+
+            </div>
+
+            <div class="flex items-center gap-4">
+
+              <div class="icon-box"><i class="fa-solid fa-broom"></i></div>
+
+              <div><h3 class="font-extrabold text-sm">Limpieza</h3><p class="text-xs text-gray-500 mt-1">Cuidado del espacio</p></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </section>
+
+  </main>
+
+  <!--*&#x20;FOOTER GLOBAL&#x20;*-->
+
+  <footer class="bg-ink text-white pt-14 pb-7">
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 pb-12">
+
+        <div>
+
+          <button onclick="navigateTo('inicio')" class="flex items-center gap-3 mb-5 text-left">
+
+            <div class="w-12 h-12 rounded-xl bg-brand flex items-center justify-center text-2xl">
+
+              <i class="fa-solid fa-paint-roller"></i>
+
+            </div>
+
+            <div>
+
+              <div class="font-black text-xl">PINTURAS MIGUEL</div>
+
+              <div class="text-xs text-gray-400">TODO EN PINTURA Y DECORACIÓN</div>
+
+            </div>
+
+          </button>
+
+          <p class="text-sm text-gray-400 leading-relaxed max-w-sm">
+
+            Pintor económico y limpio. Trabajos cuidados y acabados de calidad para viviendas, comunidades, locales y oficinas.
+
+          </p>
+
+          <div class="flex gap-3 mt-6">
+
+            <a href="https://wa.me/34693392120" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center hover:bg-green-600 transition"><i class="fa-brands fa-whatsapp"></i></a>
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <h2 class="font-black text-lg mb-6">CONTACTO</h2>
+
+          <ul class="space-y-4 text-sm text-gray-300">
+
+            <li><a class="hover:text-red-400" href="tel:693392120"><i class="fa-solid fa-phone text-red-400 w-6"></i>693 392 120</a></li>
+
+            <li><a class="hover:text-red-400 break-all" href="mailto:abengozar@yahoo.es"><i class="fa-solid fa-envelope text-red-400 w-6"></i>abengozar@yahoo.es</a></li>
+
+            <li><i class="fa-solid fa-location-dot text-red-400 w-6"></i>Benidorm, Alicante</li>
+
+            <li><a class="hover:text-red-400" href="https://www.google.com/maps/search/?api=1&query=Pinturas+Miguel+Benidorm" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-google text-red-400 w-6"></i>Ver perfil en Google</a></li>
+
+          </ul>
+
+        </div>
+
+        <div>
+
+          <h2 class="font-black text-lg mb-6">NAVEGACIÓN</h2>
+
+          <ul class="space-y-4 text-sm text-gray-300">
+
+            <li><button onclick="navigateTo('inicio')" class="hover:text-red-400"><i class="fa-solid fa-angle-right text-red-400 mr-2"></i>Inicio</button></li>
+
+            <li><button onclick="navigateTo('servicios')" class="hover:text-red-400"><i class="fa-solid fa-angle-right text-red-400 mr-2"></i>Trabajos y servicios</button></li>
+
+            <li><button onclick="navigateTo('inicio','opiniones')" class="hover:text-red-400"><i class="fa-solid fa-angle-right text-red-400 mr-2"></i>Opiniones</button></li>
+
+            <li><button onclick="navigateTo('contacto')" class="hover:text-red-400"><i class="fa-solid fa-angle-right text-red-400 mr-2"></i>Contacto y presupuesto</button></li>
+
+          </ul>
+
+          <button onclick="navigateTo('contacto')" class="mt-6 bg-brand hover:bg-red-800 px-5 py-3 rounded-lg text-sm font-extrabold transition">
+
+            PIDE TU PRESUPUESTO
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row gap-3 items-center justify-between text-xs text-gray-500">
+
+        <p>© 2024 Pinturas Miguel. Todos los derechos reservados.</p>
+
+        <p>Diseñado para ofrecer pintura y decoración de calidad.</p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!--*&#x20;BOTÓN FLOTANTE WHATSAPP&#x20;*-->
+
+  <a href="https://wa.me/34693392120" target="_blank" rel="noopener noreferrer"
+
+     aria-label="Contactar por WhatsApp"
+
+     class="fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-[#25D366] hover:bg-green-600 text-white shadow-xl flex items-center justify-center text-3xl transition hover:scale-105">
+
+    <i class="fa-brands fa-whatsapp"></i>
+
+  </a>
+
+  <script>
+
+    //*&#x20;NAVEGACIÓN SPA: cambia de sección sin recargar la página.*
+
+    function navigateTo(pageId, targetId = null) {
+
+      const targetPage = document.getElementById(pageId);
+
+      if (!targetPage) return;
+
+      document.querySelectorAll('.page').forEach(page => {
+
+        page.classList.remove('active');
+
+      });
+
+      targetPage.classList.add('active');
+
+      document.querySelectorAll('.nav-link').forEach(link => {
+
+        link.classList.toggle('active', link.dataset.page === pageId);
+
+      });
+
+      const menu = document.getElementById('mobile-menu');
+
+      const toggle = document.getElementById('menu-toggle');
+
+      menu.classList.add('hidden');
+
+      toggle.setAttribute('aria-expanded', 'false');
+
+      toggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+
+      if (targetId) {
+
+        requestAnimationFrame(() => {
+
+          document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+
+        });
+
+      } else {
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      }
+
+      //*&#x20;Mantiene la sección actual en el historial y permite compartir el enlace.*
+
+      history.replaceState(null, '', '#' + pageId);
+
+    }
+
+    //*&#x20;RESTAURAR SECCIÓN DESDE EL HASH*
+
+    window.addEventListener('DOMContentLoaded', () => {
+
+      const hash = window.location.hash.replace('#', '');
+
+      if (['inicio', 'servicios', 'contacto'].includes(hash)) {
+
+        document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+
+        document.getElementById(hash).classList.add('active');
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+
+          link.classList.toggle('active', link.dataset.page === hash);
+
+        });
+
+      }
+
+    });
+
+    //*&#x20;MENÚ MÓVIL*
+
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+
+      const menu = document.getElementById('mobile-menu');
+
+      const toggle = document.getElementById('menu-toggle');
+
+      const isOpening = menu.classList.contains('hidden');
+
+      menu.classList.toggle('hidden');
+
+      toggle.setAttribute('aria-expanded', String(isOpening));
+
+      toggle.innerHTML = isOpening
+
+        ? '<i class="fa-solid fa-xmark"></i>'
+
+        : '<i class="fa-solid fa-bars"></i>';
+
+    });
+
+    //*&#x20;FILTROS DE GALERÍA*
+
+    document.querySelectorAll('.filter-btn').forEach(button => {
+
+      button.addEventListener('click', () => {
+
+        const category = button.dataset.filter;
+
+        let visibleCount = 0;
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+
+          btn.classList.remove('active');
+
+        });
+
+        button.classList.add('active');
+
+        document.querySelectorAll('.gallery-item').forEach(item => {
+
+          const matches = category === 'todos' || item.dataset.category === category;
+
+          item.classList.toggle('hidden', !matches);
+
+          if (matches) visibleCount++;
+
+        });
+
+        document.getElementById('no-results').classList.toggle('hidden', visibleCount > 0);
+
+      });
+
+    });
+
+  </script>
+
+<script>
+
+  if ("serviceWorker" in navigator) {
+
+    window.addEventListener("load", async () => {
+
+      try {
+
+        const registration = await navigator.serviceWorker.register(
+
+          "./sw.js",
+
+          { scope: "./" }
+
+        );
+
+        console.log(
+
+          "PWA de Pinturas Miguel registrada:",
+
+          registration.scope
+
+        );
+
+      } catch (error) {
+
+        console.error(
+
+          "No se pudo registrar el Service Worker:",
+
+          error
+
+        );
+
+      }
+
+    });
+
+  }
+
+</script>
+
+<script>
+
+  //*&#x20;Fuerza el silencio incluso si se intenta modificar desde la consola.*
+
+  document.querySelectorAll("#gallery video").forEach((video) => {
+
+    video.muted = true;
+
+    video.defaultMuted = true;
+
+    video.volume = 0;
+
+    video.addEventListener("volumechange", () => {
+
+      video.muted = true;
+
+      video.volume = 0;
+
+    });
+
+  });
+
+  function toggleVideo(button) {
+
+    const video = button.parentElement.querySelector("video");
+
+    video.muted = true;
+
+    video.defaultMuted = true;
+
+    video.volume = 0;
+
+    if (video.paused) {
+
+      video.play().then(() => {
+
+        button.textContent = "❚❚ Pausar";
+
+      }).catch((error) => {
+
+        console.error("No se pudo reproducir el vídeo:", error);
+
+      });
+
+    } else {
+
+      video.pause();
+
+      button.textContent = "▶ Reproducir";
+
+    }
+
+  }
+
+  document.querySelectorAll("#gallery video").forEach((video) => {
+
+    video.addEventListener("pause", () => {
+
+      const button = video.parentElement.querySelector("button");
+
+      if (button) button.textContent = "▶ Reproducir";
+
+    });
+
+    video.addEventListener("play", () => {
+
+      const button = video.parentElement.querySelector("button");
+
+      if (button) button.textContent = "❚❚ Pausar";
+
+    });
+
+  });
+
+</script>
+
+</body>
+
+</html>
